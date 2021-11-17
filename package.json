@@ -1,0 +1,28 @@
+{
+  "name": "patcoin-bot",
+  "version": "1.0.0",
+  "description": "pricebot for discord",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "npm": ">=6.0.0",
+    "node": ">=16.6.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^0.8.2",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "axios": "^0.24.0",
+    "babel": "^6.23.0",
+    "decimal.js": "^10.3.1",
+    "discord-api-types": "^0.24.0",
+    "discord.js": "^13.3.1",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15",
+    "web3": "^1.6.0"
+  }
+}
