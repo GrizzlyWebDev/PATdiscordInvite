@@ -5,6 +5,13 @@ const { Client, Intents} = require('discord.js');
 const { token } = require('./config.json');
 const cors = require('cors');
 let invite;
+
+app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+  });
+
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, 'GUILD_MEMBERS', 'GUILD_INVITES', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS'] });
 client.on('ready', async () => {
 		const guild = client.guilds.cache.find(g => g.name === "Test");
