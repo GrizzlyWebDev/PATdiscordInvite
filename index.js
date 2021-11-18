@@ -36,7 +36,8 @@ app.get('/', async (req, res) => {
 	
 });
 app.use(cors({
-    origin: '*'
+    origin: 'https://pat-thenticator.netlify.app',
+	methods: ['GET']
 }));
 
 const port = process.env.PORT || 3000; 
