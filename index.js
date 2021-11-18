@@ -34,6 +34,9 @@ app.get('/', async (req, res) => {
 	 }
 	
 });
+app.use(cors({
+    origin: '*'
+}));
 
 const port = process.env.PORT || 3000; 
 app.listen(port, () => console.log(`Listening on port ${port}...`));
