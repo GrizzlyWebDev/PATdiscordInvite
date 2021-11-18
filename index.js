@@ -14,7 +14,14 @@ client.on('ready', async () => {
 			temporary: true,
 		})
 	})
-	
+	client.on('guildMemberAdd', async () => {
+		const channel = client.channels.cache.find(c => c.name === "general");
+		invite = await channel.createInvite({
+			maxUses: 1,
+			temporary: true,
+		})
+	}) 
+		
 	client.login(token);
 
 app.get('/', async (req, res) => {
@@ -25,19 +32,8 @@ app.get('/', async (req, res) => {
 	 } else {
 		res.send('https://discord.gg/' + invite.code);
 	 }
-	 setTimeout(function () {
-        // When NodeJS exits
-        process.on("exit", function () {
-
-            require("child_process").spawn(process.argv.shift(), process.argv, {
-                cwd: process.cwd(),
-                detached : true,
-                stdio: "inherit"
-            });
-        });
-        process.exit(1);
-    }, 1000);
+	
 });
 
-const port = process.env.PORT || 4000; 
+const port = process.env.PORT || 3000; 
 app.listen(port, () => console.log(`Listening on port ${port}...`));
