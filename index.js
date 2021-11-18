@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const { Client, Intents} = require('discord.js');
 const { token } = require('./config.json');
+const cors = require('cors');
 let invite;
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, 'GUILD_MEMBERS', 'GUILD_INVITES', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS'] });
 client.on('ready', async () => {
