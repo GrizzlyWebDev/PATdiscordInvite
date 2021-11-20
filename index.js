@@ -47,8 +47,7 @@ client.on("interactionCreate", async (msg) => {
 client.on("interactionCreate", async (msg) => {
 	const { commandName } = msg;
 	if (commandName === "clear") {
-		const channel = client.channels.cache.find((c) => c.name === "general");
-		await channel.messages.fetch({limit: 2}).then(messages =>{
+		await msg.channel.messages.fetch({limit: 100}).then(messages =>{
 			msg.channel.bulkDelete(messages);
 	   })
 	}
