@@ -40,7 +40,7 @@ client.on("messageCreate", async (msg) => {
   }
 });
 client.on("messageCreate", async (msg) => {
-	if (msg.content === "/closed") {
+	if (msg.content === "/close") {
 	  
 	  invite = "Server is closed";
 	  open = false;
@@ -48,16 +48,13 @@ client.on("messageCreate", async (msg) => {
   });
 
 client.on("guildMemberAdd", async () => {
-  if (open === "true") {
+	
     const channel = client.channels.cache.find((c) => c.name === "general");
     invite = await channel.createInvite({
       maxUses: 1,
       temporary: true,
     });
 	invite = "https://discord.gg/" + invite.code;
-  } else {
-	  invite = "Server is closed";
-  }
 });
 
 client.login(token);
