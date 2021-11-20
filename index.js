@@ -50,6 +50,7 @@ client.on("interactionCreate", async (msg) => {
 		await msg.channel.messages.fetch({limit: 100}).then(messages =>{
 			msg.channel.bulkDelete(messages);
 	   })
+	   msg.reply ({ content: 'Deleted 100 messages like God deleted your ability to have meaningful relationships with anyone.', ephemeral: true })
 	}
 });
 
