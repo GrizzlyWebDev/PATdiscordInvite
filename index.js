@@ -24,7 +24,7 @@ client.on("ready", async () => {
 
 client.on("interactionCreate", async (msg) => {
   const { commandName } = msg;
-  if (commandName === "open" && msg.author.username === 'GrizzlyDesign') {
+  if (commandName === "open") {
     invite = await msg.channel.createInvite({
       maxUses: 1,
       temporary: true,
@@ -37,7 +37,7 @@ client.on("interactionCreate", async (msg) => {
 
 client.on("interactionCreate", async (msg) => {
 	const { commandName } = msg;
-	if (commandName === "close" && msg.author.username === 'GrizzlyDesign') {
+	if (commandName === "close") {
 	  invite = "Server is closed";
 	  open = false;
 	  msg.reply ('Server is closed like your fathers views on homosexuality.')
