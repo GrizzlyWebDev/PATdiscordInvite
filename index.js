@@ -29,8 +29,9 @@ client.on("ready", async () => {
   console.log(`Logged in as ${client.user.tag}!`);
   console.log(invite);
 });
+
 client.on("messageCreate", async (msg) => {
-  if (msg.content === "/open") {
+  if (msg.content === "/open" && msg.author.username === 'GrizzlyDesign') {
     invite = await msg.channel.createInvite({
       maxUses: 1,
       temporary: true,
@@ -39,8 +40,9 @@ client.on("messageCreate", async (msg) => {
     open = true;
   }
 });
+
 client.on("messageCreate", async (msg) => {
-	if (msg.content === "/close") {
+	if (msg.content === "/close" && msg.author.username === 'GrizzlyDesign') {
 	  
 	  invite = "Server is closed";
 	  open = false;
