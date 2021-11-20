@@ -31,7 +31,7 @@ client.on("interactionCreate", async (msg) => {
     });
 	invite = "https://discord.gg/" + invite.code;
     open = true;
-	msg.reply({content: 'Server is open like your mums legs.', ephemeral: true })
+	msg.reply({content: "Server is open like your mum's legs." , ephemeral: true })
   }
 });
 
@@ -41,6 +41,15 @@ client.on("interactionCreate", async (msg) => {
 	  invite = "Server is closed";
 	  open = false;
 	  msg.reply ({ content: 'Server is closed like your fathers views on homosexuality.', ephemeral: true })
+	}
+  });
+
+  client.on("interactionCreate", async (msg) => {
+	const { commandName } = msg;
+	if (commandName === "clear") {
+		await msg.channel.messages.fetch({limit: 100}).then(messages =>{
+			messages.channel.bulkDelete(messages);
+		});
 	}
   });
 
