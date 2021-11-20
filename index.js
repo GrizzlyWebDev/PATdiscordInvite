@@ -31,7 +31,7 @@ client.on("interactionCreate", async (msg) => {
     });
 	invite = "https://discord.gg/" + invite.code;
     open = true;
-	msg.reply('Server is open like your mums legs.')
+	msg.reply({content: 'Server is open like your mums legs.', ephemeral: true })
   }
 });
 
@@ -40,7 +40,7 @@ client.on("interactionCreate", async (msg) => {
 	if (commandName === "close") {
 	  invite = "Server is closed";
 	  open = false;
-	  msg.reply ('Server is closed like your fathers views on homosexuality.')
+	  msg.reply ({ content: 'Server is closed like your fathers views on homosexuality.', ephemeral: true })
 	}
   });
 
