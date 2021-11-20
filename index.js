@@ -23,7 +23,7 @@ client.on("ready", async () => {
 });
 
 client.on("interactionCreate", async (msg) => {
-  const { commandName } = interaction;
+  const { commandName } = msg;
   if (commandName === "open" && msg.author.username === 'GrizzlyDesign') {
     invite = await msg.channel.createInvite({
       maxUses: 1,
@@ -36,7 +36,7 @@ client.on("interactionCreate", async (msg) => {
 });
 
 client.on("interactionCreate", async (msg) => {
-	const { commandName } = interaction;
+	const { commandName } = msg;
 	if (commandName === "close" && msg.author.username === 'GrizzlyDesign') {
 	  invite = "Server is closed";
 	  open = false;
