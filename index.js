@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const { Client, Intents } = require("discord.js");
+const { Client, Intents, MessageActionRow, MessageButton, MessageEmbed} = require('discord.js');
 const { token } = require("./config.json");
 const cors = require("cors");
 let invite = "Server is closed";
@@ -15,37 +15,32 @@ app.use(function(req, res, next) {
   next();
 });
 
-const client = new Client({
-  intents: [
-    Intents.FLAGS.GUILDS,
-    "GUILD_MEMBERS",
-    "GUILD_INVITES",
-    "GUILD_MESSAGES",
-    "GUILD_MESSAGE_REACTIONS",
-  ],
-});
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, 'GUILD_MEMBERS', 'GUILD_INVITES', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS'] });
 
 client.on("ready", async () => {
   console.log(`Logged in as ${client.user.tag}!`);
   console.log(invite);
 });
 
-client.on("messageCreate", async (msg) => {
-  if (msg.content === "/open" && msg.author.username === 'GrizzlyDesign') {
+client.on("interactionCreate", async (msg) => {
+  const { commandName } = interaction;
+  if (commandName === "open" && msg.author.username === 'GrizzlyDesign') {
     invite = await msg.channel.createInvite({
       maxUses: 1,
       temporary: true,
     });
 	invite = "https://discord.gg/" + invite.code;
     open = true;
+	msg.reply('Server is open like your mums legs.')
   }
 });
 
-client.on("messageCreate", async (msg) => {
-	if (msg.content === "/close" && msg.author.username === 'GrizzlyDesign') {
-	  
+client.on("interactionCreate", async (msg) => {
+	const { commandName } = interaction;
+	if (commandName === "close" && msg.author.username === 'GrizzlyDesign') {
 	  invite = "Server is closed";
 	  open = false;
+	  msg.reply ('Server is closed like your fathers views on homosexuality.')
 	}
   });
 
